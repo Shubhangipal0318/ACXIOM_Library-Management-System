@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="loginScreen" class="screen active">
+    <div class="login-wrapper">
+      <div class="login-brand">
+        <h1>Library<br/>Management<br/>System</h1>
+        <p>A complete solution for managing books, movies, memberships, and transactions with role-based access control.</p>
+      </div>
+      <div class="login-divider"></div>
+      <div class="login-card">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in to continue</p>
+        <div class="tab-switch">
+          <button class="active" onclick="setLoginType('admin', this)">Admin</button>
+          <button onclick="setLoginType('user', this)">User</button>
+        </div>
+        <div id="loginAlert" class="alert alert-danger">
+          Invalid credentials. Please try again.
+        </div>
+        <div class="form-group">
+          <label>User ID</label>
+          <input type="text" id="loginUser" placeholder="Enter user ID"/>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••"/>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="doLogin()">Sign In</button>
+        <p class="login-hint">
+          Admin: <strong>adm / adm</strong> &nbsp;|&nbsp; User: <strong>user / user</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="appScreen" class="screen">
+    <div class="topbar">
+      <span class="topbar-title">📚 Library Management System</span>
+      <div class="topbar-nav" id="topNav">
+      </div>
+    </div>
+    <div class="layout">
+      <div class="sidebar" id="sidebar">
+      </div>
+      <div class="main" id="mainContent">
+      </div>
+    </div>
+  </div>
+  <div id="confirmScreen" class="screen">
+    <div class="topbar">
+      <span class="topbar-title">📚 Library Management System</span>
+      <div class="topbar-nav">
+        <a onclick="goHome()">🏠 Home</a>
+        <a class="logout" onclick="doLogout()">Log Out</a>
+      </div>
+    </div>
+    <div class="center-screen">
+      <div class="center-box">
+        <div class="center-icon">✅</div>
+        <h2>Transaction Completed</h2>
+        <p>The transaction has been completed successfully.</p>
+        <button class="btn btn-primary" onclick="goHome()">Go to Home</button>
+      </div>
+    </div>
+  </div>
+  <div id="cancelScreen" class="screen">
+    <div class="topbar">
+      <span class="topbar-title">📚 Library Management System</span>
+      <div class="topbar-nav">
+        <a onclick="goHome()">🏠 Home</a>
+        <a class="logout" onclick="doLogout()">Log Out</a>
+      </div>
+    </div>
+    <div class="center-screen">
+      <div class="center-box">
+        <div class="center-icon">❌</div>
+        <h2>Transaction Cancelled</h2>
+        <p>The transaction was cancelled. No changes were saved.</p>
+        <button class="btn btn-primary" onclick="goHome()">Go to Home</button>
+      </div>
+    </div>
+  </div>
+  <div id="logoutScreen" class="screen">
+    <div class="center-screen" style="min-height:100vh;">
+      <div class="center-box">
+        <div class="center-icon">👋</div>
+        <h2>You've Logged Out</h2>
+        <p>Thank you for using the Library Management System. See you next time!</p>
+        <button class="btn btn-primary" onclick="showScreen('loginScreen')">Back to Login</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
